@@ -50,12 +50,14 @@
 #define EEFC_FCMD_EWP   0x3
 #define EEFC_FCMD_EWPL  0x4
 #define EEFC_FCMD_EA    0x5
+#define EEFC_FCMD_EPA   0x7		// -- SAM4E Erase Page
 #define EEFC_FCMD_SLB   0x8
 #define EEFC_FCMD_CLB   0x9
 #define EEFC_FCMD_GLB   0xa
 #define EEFC_FCMD_SGPB  0xb
 #define EEFC_FCMD_CGPB  0xc
 #define EEFC_FCMD_GGPB  0xd
+#define EEFC_FCMD_ES    0x11	// -- SAM4E Erase Sector
 
 EefcFlash::EefcFlash(Samba& samba,
                      const std::string& name,
@@ -73,7 +75,7 @@ EefcFlash::EefcFlash(Samba& samba,
 {
     assert(planes == 1 || planes == 2);
     assert(pages <= 2048);
-    assert(lockRegions <= 32);
+    assert(lockRegions <= 128);
 
     // SAM3 Errata (FWS must be 6)
     _samba.writeWord(EEFC0_FMR, 0x6 << 8);

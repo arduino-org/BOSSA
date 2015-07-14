@@ -138,6 +138,14 @@ Samba::init()
     uint8_t eproc = (cid >> 5) & 0x7;
     uint8_t arch = (cid >> 20) & 0xff;
 
+     // ----- alfran debug ---------------------------------------------------------------------------------------------------------
+
+   printf("chipId=%#08x\n", cid);
+   printf("eproc=%#08x\n", eproc);
+   printf("arch=%#08x\n", arch);
+
+   //------------------------------------------------------------------------------------------------------------------------------
+
     // Check for ARM7TDMI processor
     if (eproc == 2)
     {
@@ -173,6 +181,17 @@ Samba::init()
     {
         return true;
     }
+    // Check for Cortex-M4 processor
+    // NOTE: 0xa3cc0ce0 is ATSAM4E8E
+    else if (cid == 0xa3cc0ce0)
+    //else if (eproc == 7) 
+	{
+		// Check for SAM4E
+		// if (arch == 0x3c)
+			return true;
+		if (_debug)
+			printf("Unsupported Cortex-M4 architecture\n");
+	}
     else
     {
         if (_debug)
@@ -648,6 +667,7 @@ Samba::reset(void)
     case ATSAMD21G18A_CHIPID:
     case ATSAMD21E18A_CHIPID:
     case ATSAMR21E18A_CHIPID:
+    case ATSAM4E8E_CHIPID:
         // http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.ddi0484c/index.html
         writeWord(0xE000ED0C, 0x05FA0004);
         break;

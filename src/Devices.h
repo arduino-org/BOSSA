@@ -81,5 +81,16 @@
 #define ATSAMR21E18A_STACK_ADDR              (0x20008000ul)
 #define ATSAMR21E18A_NVMCTRL_BASE            (0x41004000ul)
 
+#define ATSAM4E8E_NAME                    "ATSAM4E8E"
+#define ATSAM4E8E_CHIPID                  (0xa3cc0ce0ul)  // DIE & REV bitfields masked in Samba::chipId()
+#define ATSAM4E8E_FLASH_BASE              (0x400000ul)
+#define ATSAM4E8E_FLASH_PAGE_SIZE         (512ul)
+#define ATSAM4E8E_FLASH_PAGES             (1024ul)
+#define ATSAM4E8E_FLASH_PLANES            (1ul)
+#define ATSAM4E8E_FLASH_LOCK_REGIONS      (128ul)
+#define ATSAM4E8E_BUFFER_ADDR             (0x20001000ul)
+#define ATSAM4E8E_STACK_ADDR              (0x20020000ul)
+#define ATSAM4E8E_NVMCTRL_BASE            (0x400e0a00ul)
+
 
 #endif // _DEVICES_H_
