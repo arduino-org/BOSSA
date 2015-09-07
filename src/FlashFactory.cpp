@@ -33,8 +33,6 @@
 #include "EefcFlash.h"
 #include "NvmFlash.h"
 
-#include <stdio.h>          // alfran
-
 FlashFactory::FlashFactory()
 {
 }
@@ -241,32 +239,13 @@ FlashFactory::create(Samba& samba, uint32_t chipId)
     case 0x329973a0 :
         flash = new EefcFlash(samba, "ATSAM9XE128", 0x200000, 256, 512, 1, 8, 0x300000, 0x303000, 0xfffffa00, true);
         break;
-
     //
     // SAM4E
     //
-    	
-    case 0x23cc0ce0 :
-    //case 0xa3cc0ce0 :
-        flash = new EefcFlash(samba, "ATSAM4E8_alfran", 		0x400000, 	1024,  	512, 	1, 			128, 			0x20001000, 0x20020000, 0x400e0a00, false);
-        break;
-    
-
     case ATSAM4E8E_CHIPID:
-
-        fprintf(stderr, "\nATSAM4E8E_FLASH_BASE %08x \n", ATSAM4E8E_FLASH_BASE);
-        fprintf(stderr, "ATSAM4E8E_FLASH_PAGES %d \n", ATSAM4E8E_FLASH_PAGES);
-        fprintf(stderr, "ATSAM4E8E_FLASH_PAGE_SIZE %d \n", ATSAM4E8E_FLASH_PAGE_SIZE);
-        fprintf(stderr, "ATSAM4E8E_FLASH_PLANES %d \n", ATSAM4E8E_FLASH_PLANES);
-        fprintf(stderr, "ATSAM4E8E_FLASH_LOCK_REGIONS %d \n", ATSAM4E8E_FLASH_LOCK_REGIONS);
-        fprintf(stderr, "ATSAM4E8E_BUFFER_ADDR %08x \n", ATSAM4E8E_BUFFER_ADDR);
-        fprintf(stderr, "ATSAM4E8E_STACK_ADDR %08x \n", ATSAM4E8E_STACK_ADDR);
-        fprintf(stderr, "ATSAM4E8E_NVMCTRL_BASE %08x \n\n", ATSAM4E8E_NVMCTRL_BASE);
-
-
         flash = new EefcFlash( samba, ATSAM4E8E_NAME, ATSAM4E8E_FLASH_BASE, ATSAM4E8E_FLASH_PAGES, ATSAM4E8E_FLASH_PAGE_SIZE,
                               ATSAM4E8E_FLASH_PLANES, ATSAM4E8E_FLASH_LOCK_REGIONS,
-                              ATSAM4E8E_BUFFER_ADDR, ATSAM4E8E_STACK_ADDR, ATSAM4E8E_NVMCTRL_BASE, /*canBrownout*/false ) ;
+                              ATSAM4E8E_BUFFER_ADDR, ATSAM4E8E_STACK_ADDR, ATSAM4E8E_NVMCTRL_BASE, /*canBrownout*/false, /*autoErase*/ false) ;
         break;
 
     default:

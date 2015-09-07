@@ -50,7 +50,7 @@
 #define EEFC_FCMD_EWP   0x3
 #define EEFC_FCMD_EWPL  0x4
 #define EEFC_FCMD_EA    0x5
-#define EEFC_FCMD_EPA   0x7		// -- SAM4E Erase Page
+#define EEFC_FCMD_EPA   0x7		// -- SAM4E Erase Page 
 #define EEFC_FCMD_SLB   0x8
 #define EEFC_FCMD_CLB   0x9
 #define EEFC_FCMD_GLB   0xa
@@ -69,9 +69,10 @@ EefcFlash::EefcFlash(Samba& samba,
                      uint32_t user,
                      uint32_t stack,
                      uint32_t regs,
-                     bool canBrownout)
+                     bool canBrownout,
+					 bool pageErase)
     : Flash(samba, name, addr, pages, size, planes, lockRegions, user, stack),
-      _regs(regs), _canBrownout(canBrownout), _eraseAuto(true)
+      _regs(regs), _canBrownout(canBrownout), _eraseAuto(pageErase)
 {
     assert(planes == 1 || planes == 2);
     assert(pages <= 2048);
@@ -102,7 +103,7 @@ EefcFlash::eraseAll()
 void
 EefcFlash::eraseAuto(bool enable)
 {
-    _eraseAuto = enable;
+   _eraseAuto = enable;
 }
 
 bool

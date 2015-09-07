@@ -138,14 +138,6 @@ Samba::init()
     uint8_t eproc = (cid >> 5) & 0x7;
     uint8_t arch = (cid >> 20) & 0xff;
 
-     // ----- alfran debug ---------------------------------------------------------------------------------------------------------
-
-   printf("chipId=%#08x\n", cid);
-   printf("eproc=%#08x\n", eproc);
-   printf("arch=%#08x\n", arch);
-
-   //------------------------------------------------------------------------------------------------------------------------------
-
     // Check for ARM7TDMI processor
     if (eproc == 2)
     {
@@ -183,16 +175,13 @@ Samba::init()
     }
     // Check for Cortex-M4 processor
     // NOTE: 0xa3cc0ce0 is ATSAM4E8E
-    else if (cid == 0xa3cc0ce0)
-    //else if (eproc == 7) 
-	{
-		// Check for SAM4E
-		// if (arch == 0x3c)
-			return true;
-		if (_debug)
-			printf("Unsupported Cortex-M4 architecture\n");
-	}
-    else
+    else if (cid == 0xa3cc0ce0) 
+		return true;
+	else if ((arch == 0x3c) && (eproc == 0x07)) 
+		return true;
+	else if (_debug)
+		printf("Unsupported Cortex-M4 architecture\n");
+	else
     {
         if (_debug)
             printf("Unsupported processor\n");

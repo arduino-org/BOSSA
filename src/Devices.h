@@ -27,6 +27,7 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ///////////////////////////////////////////////////////////////////////////////
 
+
 #ifndef _DEVICES_H_
 #define _DEVICES_H_
 
@@ -34,7 +35,7 @@
 
 #define ATSAMD_CHIPID_MASK                   (0xFFFF00FFul)  // mask for DIE & REV bitfields removal in Samba::chipId()
 #define ATSAMD_BOOTLOADER_SIZE               (0x00002000ul)  // 8192 bytes
-#define ATSAMR_BOOTLOADER_SIZE               (0x00001000ul) // 4096 bytes, USB-CDC only
+#define ATSAMR_BOOTLOADER_SIZE               (0x00001000ul)  // 4096 bytes, USB-CDC only
 #define ATSAMD_FLASH_ROW_PAGES               (4ul)           // 4 pages per row
 
 #define ATSAMD21J18A_NAME                    "ATSAMD21J18A"
@@ -81,16 +82,16 @@
 #define ATSAMR21E18A_STACK_ADDR              (0x20008000ul)
 #define ATSAMR21E18A_NVMCTRL_BASE            (0x41004000ul)
 
-#define ATSAM4E8E_NAME                    "ATSAM4E8E"
-#define ATSAM4E8E_CHIPID                  (0xa3cc0ce0ul)  // DIE & REV bitfields masked in Samba::chipId()
-#define ATSAM4E8E_FLASH_BASE              (0x400000ul)
-#define ATSAM4E8E_FLASH_PAGE_SIZE         (512ul)
-#define ATSAM4E8E_FLASH_PAGES             (1024ul)
-#define ATSAM4E8E_FLASH_PLANES            (1ul)
-#define ATSAM4E8E_FLASH_LOCK_REGIONS      (128ul)
-#define ATSAM4E8E_BUFFER_ADDR             (0x20001000ul)
-#define ATSAM4E8E_STACK_ADDR              (0x20020000ul)
-#define ATSAM4E8E_NVMCTRL_BASE            (0x400e0a00ul)
+#define ATSAM4E8E_NAME                   	 "ATSAM4E8E"
+#define ATSAM4E8E_CHIPID                 	 (0xa3cc0ce0ul)  // DIE & REV bitfields masked in Samba::chipId()
+#define ATSAM4E8E_FLASH_BASE              	 (0x400000ul)
+#define ATSAM4E8E_FLASH_PAGE_SIZE         	 (512ul)
+#define ATSAM4E8E_FLASH_PAGES             	 (1024ul)
+#define ATSAM4E8E_FLASH_PLANES            	 (1ul)
+#define ATSAM4E8E_FLASH_LOCK_REGIONS      	 (128ul)
+#define ATSAM4E8E_BUFFER_ADDR             	 (0x20001000ul)
+#define ATSAM4E8E_STACK_ADDR              	 (0x20020000ul)
+#define ATSAM4E8E_NVMCTRL_BASE            	 (0x400e0a00ul)
 
 
 #endif // _DEVICES_H_

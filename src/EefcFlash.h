@@ -47,7 +47,8 @@ public:
               uint32_t user,
               uint32_t stack,
               uint32_t regs,
-              bool canBrownout);
+              bool canBrownout,
+			  bool pageErase=true);		//ATSAM4E8E --- page erase bugfix, alfran
     virtual ~EefcFlash();
 
     void eraseAll();
